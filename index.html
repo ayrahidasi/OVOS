@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Controle de Ovos</title>
+  <link rel="manifest" href="manifest.json">
+  <link rel="stylesheet" href="styles.css" />
+  <meta name="theme-color" content="#3D7A3D" />
+</head>
+<body>
+  <header>
+    <h1>Controle de Ovos</h1>
+    <nav>
+      <button id="tabRegistrar" class="active">Registrar</button>
+      <button id="tabResumo">Resumo</button>
+      <button id="tabDados">Dados</button>
+    </nav>
+  </header>
+
+  <main>
+    <!-- Aba Registrar -->
+    <section id="registrar" class="tab">
+      <form id="formEntrada" autocomplete="off">
+        <div class="campo">
+          <label for="data">Data</label>
+          <input type="date" id="data" name="data" required />
+          <small>Dica: hoje já vem preenchido (pode editar).</small>
+        </div>
+        <div class="campo">
+          <label for="ovos">Ovos</label>
+          <input type="number" id="ovos" name="ovos" min="0" step="1" inputmode="numeric" required />
+        </div>
+        <div class="campo">
+          <label for="obs">Observação</label>
+          <textarea id="obs" name="obs" rows="3" placeholder="Lote, galinheiro, condições, etc."></textarea>
+        </div>
+        <div class="botoes">
+          <button type="submit" class="primario">Salvar</button>
+          <button type="button" id="btnLimpar">Limpar</button>
+        </div>
+      </form>
+
+      <div class="info">
+        <h3>Hoje</h3>
+        <p>Total de ovos hoje: <strong id="totalHoje">0</strong></p>
+      </div>
+
+      <div class="lista">
+        <h3>Registros (do mais recente ao mais antigo)</h3>
+        <table id="tabelaRegistros">
+          <thead>
+            <tr>
+              <th>Data</th>
+              <th>Ovos</th>
+              <th>Observação</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- Aba Resumo -->
+    <section id="resumo" class="tab hidden">
+      <div class="painel">
+        <h2>Resumo</h2>
+
+        <div class="grupo">
+          <h3>Diário</h3>
+          <label for="diaSel">Data</label>
+          <input type="date" id="diaSel" />
+          <p>Total do dia: <strong id="totalDia">0</strong></p>
+        </div>
+
+        <div class="grupo">
+          <h3>Semanal</h3>
+          <label for="semanaSel">Escolha uma data da semana</label>
+          <input type="date" id="semanaSel" />
+          <p>Início (seg): <strong id="inicioSemana"></strong> — Fim (dom): <strong id="fimSemana"></strong></p>
+          <p>Total da semana: <strong id="totalSemana">0</strong></p>
+        </div>
+
+        <div class="grupo">
+          <h3>Mensal</h3>
+          <label for="mesSel">Escolha uma data do mês</label>
+          <input type="date" id="mesSel" />
+          <p>Total do mês: <strong id="totalMes">0</strong></p>
+        </div>
+
+        <div class="grupo">
+          <h3>Anual</h3>
+          <label for="anoSel">Escolha uma data do ano</label>
+          <input type="date" id="anoSel" />
+          <p>Total do ano: <strong id="totalAno">0</strong></p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Aba Dados -->
+    <section id="dados" class="tab hidden">
+      <div class="painel">
+        <h2>Dados</h2>
+        <p>Os registros são salvos apenas no seu dispositivo (offline). Você pode exportar para CSV.</p>
+        <div class="botoes">
+          <button id="btnExportar" class="primario">Exportar CSV</button>
+          <button id="btnApagarTudo" class="perigo">Apagar tudo</button>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>© 2025 — Controle de Ovos (PWA). Funciona offline e pode ser instalado na tela inicial.</p>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
